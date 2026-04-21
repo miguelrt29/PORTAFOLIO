@@ -1,0 +1,431 @@
+<!-- 
+  Portafolio - Plantilla principal del portafolio personal de Miguel Ángel Reyes Torres
+  Contiene: Navbar, Hero, Sobre Mí, Habilidades, Proyectos, Contacto, Chat IA y Footer
+-->
+
+<!-- ==================== NAVBAR ==================== -->
+<!-- Barra de navegación fija en la parte superior -->
+<nav class="navbar">
+  <!-- Contenedor para alinear elementos del navbar -->
+  <div class="nav-container">
+    <!-- Logo del navbar - enlace que lleva a la sección hero -->
+    <a href="#hero" class="nav-logo">Miguel Angel Reyes</a>
+    
+    <!-- Botón hamburguesa para menú móvil - togglea el menú -->
+    <div class="nav-toggle" (click)="toggleMobileMenu()">
+      <span></span>  <!-- Línea 1 del icono hamburguesa -->
+      <span></span>  <!-- Línea 2 del icono hamburguesa -->
+      <span></span>  <!-- Línea 3 del icono hamburguesa -->
+    </div>
+    
+    <!-- Menú de navegación - se muestra/oculta según mobileMenuOpen -->
+    <div class="nav-links" [class.active]="mobileMenuOpen">
+      <!-- Enlaces a las secciones del portafolio -->
+      <a href="#about" (click)="closeMobileMenu()">Sobre Mí</a>
+      <a href="#skills" (click)="closeMobileMenu()">Habilidades</a>
+      <a href="#projects" (click)="closeMobileMenu()">Proyectos</a>
+      <a href="#contact" (click)="closeMobileMenu()">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== HERO SECTION ==================== -->
+<!-- Sección principal de portada -->
+<section class="hero" id="hero">
+  <!-- Contenedor del contenido principal -->
+  <div class="hero-content">
+    <!-- Área de texto del hero -->
+    <div class="hero-text">
+      <!-- Saludo inicial -->
+      <span class="greeting">Hola, soy</span>
+      <!-- Nombre completo -->
+      <h1 class="name">Miguel Ángel Reyes Torres</h1>
+      <!-- Título profesional -->
+      <h2 class="title">Desarrollador de Software</h2>
+      <!-- Descripción breve -->
+      <p class="description">
+        Desarrollador Full Stack especializado en Angular y TypeScript en frontend,
+        con experiencia integrando inteligencia artificial en proyectos reales.
+        Construyo soluciones que generan impacto.
+      </p>
+      <!-- Botones de acción -->
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
+        <a href="#contact" class="btn btn-outline">Contacto</a>
+      </div>
+    </div>
+    
+    <!-- Imagen/perfil del desarrollador -->
+    <div class="hero-image">
+      <div class="profile-ring">
+        <!-- Iniciales del nombre como avatar placeholder -->
+        <div class="profile-placeholder">MAR</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Indicador visual para encourage scroll -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT SECTION ==================== -->
+<!-- Sección Sobre Mí -->
+<section class="section" id="about">
+  <h2 class="section-title">Sobre Mí</h2>
+  <div class="about-content">
+    <!-- Texto descriptivo personal -->
+    <div class="about-text">
+      <p>
+        Soy desarrollador de software <strong>recién egresado del SENA</strong> del programa
+        Análisis y Desarrollo de Software (ADSO), con sede en <strong>Armenia, Quindío</strong>.
+      </p>
+      <p>
+        Me especializo en desarrollo web <strong>frontend con Angular y TypeScript</strong>,
+        y <strong>backend con Java Spring Boot</strong>, realizando consumo de APIs REST
+        y construcción de interfaces administrativas. Tengo experiencia real integrando
+        inteligencia artificial en proyectos.
+      </p>
+      <p>
+        Recientemente construí un sistema completo de captura y análisis de feedback automatizado
+        con <strong>clasificación de sentimientos usando HuggingFace</strong>, visualización en
+        <strong>Looker Studio</strong> y backend en <strong>Google Apps Script</strong>.
+      </p>
+      <p class="personal-qualities">
+        Soy una persona <strong>curiosa, perseverante y que no se rindes ante los obstáculos</strong>.
+        Lo demuestro con hechos — cuando enfrento un problema busco soluciones hasta encontrarlas.
+        Soy proactivo, trabajo bien en equipo, me apasiona aprender nuevas tecnologías
+        y construir soluciones que generen impacto real en las personas.
+      </p>
+    </div>
+    
+    <!-- Información adicional en formato de lista -->
+    <div class="about-info">
+      <div class="info-item">
+        <span class="info-label">Nombre</span>
+        <span class="info-value">Miguel Ángel Reyes Torres</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Ubicación</span>
+        <span class="info-value">Armenia, Quindío</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Formación</span>
+        <span class="info-value">SENA - ADSO</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Inglés</span>
+        <span class="info-value">Nivel B2</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Enfoque</span>
+        <span class="info-value">Full Stack & IA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SKILLS SECTION ==================== -->
+<!-- Sección de Habilidades con fondo oscuro -->
+<section class="section section-dark" id="skills">
+  <h2 class="section-title">Habilidades</h2>
+  <p class="section-subtitle">Tecnologías y herramientas que domino</p>
+  
+  <!-- Grid de tarjetas de habilidades -->
+  <div class="skills-grid">
+    <!-- Tarjeta: Angular -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>A</span></div>
+      <h3>Angular</h3>
+      <p>Framework frontend moderno con TypeScript, componentes, servicios, routing y RXJS.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 90%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: TypeScript -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>TS</span></div>
+      <h3>TypeScript</h3>
+      <p>Lenguaje tipado para desarrollo frontend robusto y mantenible.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 90%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: Spring Boot -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>S</span></div>
+      <h3>Spring Boot</h3>
+      <p>Backend Java con REST APIs, Spring Data JPA, Spring Security.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 85%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: Java -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>J</span></div>
+      <h3>Java</h3>
+      <p>Programación orientada a objetos y patrones de diseño.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 85%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: HTML/CSS/JS -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>H</span></div>
+      <h3>HTML/CSS/JS</h3>
+      <p>Diseño responsive con CSS Grid, Flexbox y animaciones.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 95%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: MySQL -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>DB</span></div>
+      <h3>MySQL</h3>
+      <p>Diseño de esquemas relacionales y consultas SQL.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 80%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: APIs REST -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>API</span></div>
+      <h3>APIs REST</h3>
+      <p>Consumo y construcción de APIs REST.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 85%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: Integración de IA -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>IA</span></div>
+      <h3>Integración de IA</h3>
+      <p>Modelos de IA (HuggingFace), clasificación de sentimientos.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 80%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: Google Apps Script -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>G</span></div>
+      <h3>Google Apps Script</h3>
+      <p>Automatización e integración con Google Sheets.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 75%"></div></div>
+    </div>
+    
+    <!-- Tarjeta: Git/GitHub -->
+    <div class="skill-card">
+      <div class="skill-icon"><span>GT</span></div>
+      <h3>Git/GitHub</h3>
+      <p>Control de versiones y trabajo colaborativo.</p>
+      <div class="skill-level"><div class="level-bar" style="width: 85%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECTS SECTION ==================== -->
+<!-- Sección de Proyectos -->
+<section class="section" id="projects">
+  <h2 class="section-title">Proyectos</h2>
+  <p class="section-subtitle">Proyectos destacados desarrollados</p>
+  
+  <!-- Grid de tarjetas de proyectos -->
+  <div class="projects-grid">
+    <!-- Proyecto 1: Sistema de Feedback con IA -->
+    <article class="project-card">
+      <div class="project-image"><div class="project-placeholder">IA</div></div>
+      <div class="project-content">
+        <h3>Sistema de Feedback con IA</h3>
+        <p>Sistema completo de captura y análisis de feedback automatizado con clasificación de sentimientos usando HuggingFace y visualización en Looker Studio.</p>
+        <div class="project-techs">
+          <span>HuggingFace</span>
+          <span>Looker Studio</span>
+          <span>Google Apps Script</span>
+        </div>
+        <a href="https://github.com/miguelrt29/alegra-feedback.git" target="_blank" class="project-link">Ver Código</a>
+      </div>
+    </article>
+    
+    <!-- Proyecto 2: E-Commerce Platform -->
+    <article class="project-card">
+      <div class="project-image"><div class="project-placeholder">E-Com</div></div>
+      <div class="project-content">
+        <h3>E-Commerce Platform</h3>
+        <p>Plataforma de ventas en línea completa con Angular y Spring Boot. Carrito de compras, pagos y panel de administración.</p>
+        <div class="project-techs">
+          <span>Angular</span>
+          <span>Spring Boot</span>
+          <span>MySQL</span>
+        </div>
+        <a href="https://github.com/miguelrt29" target="_blank" class="project-link">Ver Código</a>
+      </div>
+    </article>
+    
+    <!-- Proyecto 3: Repórtelo! -->
+    <article class="project-card">
+      <div class="project-image"><div class="project-placeholder">Dash</div></div>
+      <div class="project-content">
+        <h3>Repórtelo!</h3>
+        <p>Panel de administración con visualización de datos en gráficos interactivos y gestión de usuarios. Proyecto final del SENA.</p>
+        <div class="project-techs">
+          <span>Angular</span>
+          <span>Chart.js</span>
+          <span>TypeScript</span>
+          <span>Spring Boot</span>
+        </div>
+        <a href="https://frontend-eight-beta-69.vercel.app/" target="_blank" class="project-link">Ver Proyecto</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== CONTACT SECTION ==================== -->
+<!-- Sección de Contacto con fondo oscuro -->
+<section class="section section-dark" id="contact">
+  <h2 class="section-title">Contacto</h2>
+  <p class="section-subtitle">¿Interesado en trabajar juntos? Escríbeme</p>
+  
+  <div class="contact-content">
+    <!-- Información de contacto -->
+    <div class="contact-info">
+      <!-- Email -->
+      <div class="contact-item">
+        <div class="contact-icon">@</div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:miguelrt2903@gmail.com">miguelrt2903@gmail.com</a>
+        </div>
+      </div>
+      
+      <!-- LinkedIn -->
+      <div class="contact-item">
+        <div class="contact-icon">L</div>
+        <div>
+          <h4>LinkedIn</h4>
+          <a href="https://linkedin.com/in/miguel-reyes-5b621a373" target="_blank">linkedin.com/in/miguel-reyes-5b621a373</a>
+        </div>
+      </div>
+      
+      <!-- GitHub -->
+      <div class="contact-item">
+        <div class="contact-icon">G</div>
+        <div>
+          <h4>GitHub</h4>
+          <a href="https://github.com/miguelrt29" target="_blank">github.com/miguelrt29</a>
+        </div>
+      </div>
+      
+      <!-- Teléfono -->
+      <div class="contact-item">
+        <div class="contact-icon">T</div>
+        <div>
+          <h4>Teléfono</h4>
+          <a href="tel:3102838498">3102838498</a>
+        </div>
+      </div>
+      
+      <!-- Ubicación -->
+      <div class="contact-item">
+        <div class="contact-icon">U</div>
+        <div>
+          <h4>Ubicación</h4>
+          <p>Armenia, Quindío</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Formulario de contacto -->
+    <form class="contact-form" (ngSubmit)="onSubmitContact()">
+      <!-- Campo nombre -->
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" placeholder="Tu nombre" [(ngModel)]="contactData.name" required>
+      </div>
+      
+      <!-- Campo email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" [(ngModel)]="contactData.email" required>
+      </div>
+      
+      <!-- Campo mensaje -->
+      <div class="form-group">
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tu mensaje..." [(ngModel)]="contactData.message" required></textarea>
+      </div>
+      
+      <!-- Botón de envío -->
+      <button type="submit" class="btn btn-primary" [disabled]="contactStatus === 'sending'">
+        {{ contactStatus === 'sending' ? 'Enviando...' : 'Enviar Mensaje' }}
+      </button>
+      
+      <!-- Mensaje de éxito -->
+      @if (contactStatus === 'success') {
+        <p class="contact-success">{{ contactMessage }}</p>
+      }
+      
+      <!-- Mensaje de error -->
+      @if (contactStatus === 'error') {
+        <p class="contact-error">{{ contactMessage }}</p>
+      }
+    </form>
+  </div>
+</section>
+
+<!-- ==================== CHAT BOT ==================== -->
+<!-- Botón flotante para abrir el chat - solo visible cuando chat está cerrado -->
+@if (!chatOpen) {
+  <button class="chat-fab" (click)="toggleChat()" aria-label="Abrir chat">
+    💬
+  </button>
+}
+
+<!-- Ventana del chat - solo visible cuando chat está abierto -->
+@if (chatOpen) {
+  <div class="chat-window">
+    <!-- Encabezado del chat -->
+    <div class="chat-header">
+      <span>🤖 Asistente de Miguel</span>
+      <button (click)="toggleChat()">✕</button>
+    </div>
+    
+    <!-- Área de mensajes del chat -->
+    <!-- #chatMessagesContainer: referencia local para control de scroll -->
+    <!-- (scroll): evento que detecta cuando el usuario hace scroll -->
+    <div class="chat-messages" #chatMessagesContainer (scroll)="onChatScroll()">
+      <!-- Loop que itera sobre cada mensaje en chatMessages -->
+      @for (msg of chatMessages; track $index) {
+        <!-- Mensaje del usuario o de la IA según el rol -->
+        <div [class]="msg.role === 'user' ? 'chat-msg user' : 'chat-msg ai'">
+          {{ msg.text }}
+        </div>
+      }
+      
+      <!-- Indicador de "escribiendo..." mientras carga respuesta -->
+      @if (chatLoading) {
+        <div class="chat-msg ai">Escribiendo...</div>
+      }
+    </div>
+    
+    <!-- Botón para ir al final del chat - solo visible cuando el usuario scroll-up -->
+    @if (showScrollToBottom) {
+      <button class="scroll-bottom-btn" (click)="scrollToBottom()">↓</button>
+    }
+    
+    <!-- Área de input del chat -->
+    <div class="chat-input-area">
+      <!-- Campo de texto para escribir mensajes -->
+      <input
+        type="text"
+        [(ngModel)]="chatInput"
+        (keydown)="onChatKeydown($event)"
+        placeholder="Escribe tu pregunta..."
+        [disabled]="chatLoading"
+      />
+      <!-- Botón para enviar mensaje -->
+      <button (click)="sendChatMessage()" [disabled]="chatLoading">Enviar</button>
+    </div>
+  </div>
+}
+
+<!-- ==================== FOOTER ==================== -->
+<!-- Pie de página -->
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2026 Miguel Ángel Reyes Torres. Todos los derechos reservados.</p>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Compiled output
+dist/
+.angular/
+
+# Environment files (keep secrets safe)
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log
+*.log
