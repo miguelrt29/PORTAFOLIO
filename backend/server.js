@@ -46,7 +46,7 @@ HABILIDADES TÉCNICAS CON NIVEL:
 
 PROYECTOS (3 principales):
 1. Sistema de Feedback con IA - Sistema de feedback automatizado con clasificación de sentimientos (HuggingFace) y visualización en Looker Studio. Tech: HuggingFace, Looker Studio, Google Apps Script
-2. E-Commerce Platform - Plataforma de ventas online con Angular y Spring Boot, carrito de compras y panel admin. Tech: Angular, Spring Boot, MySQL
+2. Mi Portafolio - Mi portafolio personal como desarrollador de software. Construido con Angular y TypeScript, con chat de IA integrado usando HuggingFace. Repo: https://github.com/miguelrt29/PORTAFOLIO.git
 3. Repórtelo! - Dashboard con gráficos interactivos (Chart.js), proyecto final SENA. Tech: Angular, Chart.js, TypeScript, Spring Boot
 
 CONTACTO:
@@ -84,7 +84,7 @@ app.post('/api/chat', async (req, res) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'meta-llama/Llama-3.2-1B-Instruct',
+          model: 'meta-llama/Llama-3.1-8B-Instruct',
           messages: [
             {
               role: "system",

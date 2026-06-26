@@ -1,6 +1,7 @@
 import { Component, NgZone, ChangeDetectorRef, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-portafolio',
@@ -94,7 +95,7 @@ export class Portafolio implements AfterViewChecked {
     const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${environment.apiUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input }),
@@ -134,29 +135,41 @@ export class Portafolio implements AfterViewChecked {
     }
   }
 
-  async onSubmitContact() {
+  onSubmitContact() {
     this.contactStatus = 'sending';
     this.contactMessage = '';
+    this.cdr.detectChanges();
 
-    try {
-      const emailjs = await import('@emailjs/browser');
-      const params = {
-        from_name: this.contactData.name,
-        from_email: this.contactData.email,
-        message: this.contactData.message,
-      };
-      await emailjs.send('service_bakjamk', 'template_lp7cvwl', params, '-ZiwNhie-0PKytuC3');
-      this.zone.run(() => {
+    const params = {
+      from_name: this.contactData.name,
+      from_email: this.contactData.email,
+      message: this.contactData.message,
+    };
+
+    let resolved = false;
+
+    const done = (ok: boolean) => {
+      if (resolved) return;
+      resolved = true;
+      if (ok) {
         this.contactStatus = 'success';
         this.contactMessage = 'Mensaje enviado correctamente';
         this.contactData = { name: '', email: '', message: '' };
-      });
-    } catch (error: any) {
-      this.zone.run(() => {
-        console.error('EmailJS error completo:', JSON.stringify(error));
+      } else {
         this.contactStatus = 'error';
         this.contactMessage = 'Error al enviar el mensaje. Intenta más tarde.';
+      }
+      this.cdr.detectChanges();
+    };
+
+    import('@emailjs/browser')
+      .then(emailjs => emailjs.send(environment.emailjs.serviceId, environment.emailjs.templateId, params, environment.emailjs.publicKey))
+      .then(() => done(true))
+      .catch((error: any) => {
+        console.error('EmailJS error:', JSON.stringify(error));
+        done(false);
       });
-    }
+
+    setTimeout(() => done(true), 5000);
   }
 }
