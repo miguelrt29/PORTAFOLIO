@@ -29,17 +29,36 @@
   </div>
 </nav>
 
+<!-- Scroll progress bar -->
+<div class="scroll-progress" [style.width.%]="scrollPercent"></div>
+
 <!-- ==================== HERO SECTION ==================== -->
 <!-- Sección principal de portada -->
 <section class="hero" id="hero">
+  <!-- Partículas flotantes -->
+  <div class="particles-container">
+    @for (p of particles; track $index) {
+      <div class="particle" [ngStyle]="getParticleStyle(p)"></div>
+    }
+  </div>
+
   <!-- Contenedor del contenido principal -->
   <div class="hero-content">
     <!-- Área de texto del hero -->
     <div class="hero-text">
       <!-- Saludo inicial -->
       <span class="greeting">Hola, soy</span>
-      <!-- Nombre completo -->
-      <h1 class="name">Miguel Ángel Reyes Torres</h1>
+      <!-- Nombre completo con typewriter + glitch -->
+      <h1 class="name">
+        <span class="glitch-wrapper">
+          <span class="glitch-text" [class.glitch-active]="glitchActive" [attr.data-text]="fullName">
+            {{ displayedName }}
+          </span>
+        </span>
+        @if (!typewriterDone) {
+          <span class="typewriter-cursor"></span>
+        }
+      </h1>
       <!-- Título profesional -->
       <h2 class="title">Desarrollador de Software</h2>
       <!-- Descripción breve -->

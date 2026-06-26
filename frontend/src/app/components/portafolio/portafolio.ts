@@ -1,4 +1,4 @@
-import { Component, NgZone, ChangeDetectorRef, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, NgZone, ChangeDetectorRef, ViewChild, ElementRef, AfterViewChecked, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
@@ -10,9 +10,17 @@ import { environment } from '../../../environments/environment';
   templateUrl: './portafolio.html',
   styleUrl: './portafolio.css',
 })
-export class Portafolio implements AfterViewChecked {
+export class Portafolio implements AfterViewChecked, OnInit {
   name = 'Miguel Angel Reyes Torres';
   currentYear = new Date().getFullYear();
+
+  // Cyberpunk
+  fullName = 'Miguel Ángel Reyes Torres';
+  displayedName = '';
+  typewriterDone = false;
+  glitchActive = false;
+  scrollPercent = 0;
+  particles: { x: number; y: number; delay: number; duration: number; opacity: number }[] = [];
   mobileMenuOpen = false;
   showScrollToBottom = false;
 
@@ -36,6 +44,59 @@ export class Portafolio implements AfterViewChecked {
 
 
   constructor(private zone: NgZone, private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    this.generateParticles();
+    this.startTypewriter();
+    setTimeout(() => {
+      this.glitchActive = true;
+      setTimeout(() => {
+        this.glitchActive = false;
+      }, 1500);
+    }, 2000);
+  }
+
+  generateParticles() {
+    this.particles = Array.from({ length: 18 }, () => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 8,
+      duration: 6 + Math.random() * 4,
+      opacity: 0.3 + Math.random() * 0.3,
+    }));
+  }
+
+  startTypewriter() {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i <= this.fullName.length) {
+        this.displayedName = this.fullName.slice(0, i);
+        i++;
+        this.cdr.detectChanges();
+      } else {
+        clearInterval(interval);
+        this.typewriterDone = true;
+        this.cdr.detectChanges();
+      }
+    }, 60);
+  }
+
+  getParticleStyle(p: { x: number; y: number; delay: number; duration: number; opacity: number }) {
+    return {
+      left: `${p.x}%`,
+      top: `${p.y}%`,
+      opacity: p.opacity,
+      animationDelay: `${p.delay}s`,
+      animationDuration: `${p.duration}s`,
+    };
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    this.scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  }
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
