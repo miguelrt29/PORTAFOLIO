@@ -396,7 +396,7 @@
 <!-- Botón flotante para abrir el chat - solo visible cuando chat está cerrado -->
 @if (!chatOpen) {
   <button class="chat-fab" (click)="toggleChat()" aria-label="Abrir chat">
-    💬
+    <i class="bi bi-chat-dots"></i>
   </button>
 }
 
@@ -405,8 +405,8 @@
   <div class="chat-window">
     <!-- Encabezado del chat -->
     <div class="chat-header">
-      <span>🤖 Asistente de Miguel</span>
-      <button (click)="toggleChat()">✕</button>
+      <span><i class="bi bi-robot"></i> Asistente de Miguel</span>
+      <button (click)="toggleChat()"><i class="bi bi-x-lg"></i></button>
     </div>
     
     <!-- Área de mensajes del chat -->
